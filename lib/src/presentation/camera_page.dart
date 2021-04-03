@@ -25,6 +25,10 @@ class CameraCamera extends StatefulWidget {
   ///Enable zoom camera ( default = true )
   final bool enableZoom;
 
+  final Widget? back;
+
+  final Widget? flash;
+
   CameraCamera({
     Key? key,
     this.resolutionPreset = ResolutionPreset.ultraHigh,
@@ -32,6 +36,8 @@ class CameraCamera extends StatefulWidget {
     this.cameraSide = CameraSide.all,
     this.flashModes = FlashMode.values,
     this.enableZoom = true,
+    this.back,
+    this.flash,
   }) : super(key: key);
 
   @override
@@ -41,6 +47,7 @@ class CameraCamera extends StatefulWidget {
 class _CameraCameraState extends State<CameraCamera> {
   late CameraBloc bloc;
   late StreamSubscription _subscription;
+
   @override
   void initState() {
     bloc = CameraBloc(
@@ -63,8 +70,6 @@ class _CameraCameraState extends State<CameraCamera> {
   @override
   void dispose() {
     bloc.dispose();
-    //SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-
     _subscription.cancel();
     super.dispose();
   }
@@ -77,37 +82,29 @@ class _CameraCameraState extends State<CameraCamera> {
         stream: bloc.statusStream,
         initialData: CameraStatusEmpty(),
         builder: (_, snapshot) => snapshot.data!.when(
-            preview: (controller) => Stack(
-                  children: [
-                    CameraCameraPreview(
-                      enableZoom: widget.enableZoom,
-                      key: UniqueKey(),
-                      controller: controller,
-                    ),
-                    if (bloc.status.preview.cameras.length > 1)
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: InkWell(
-                            onTap: () {
-                              bloc.changeCamera();
-                            },
-                            child: CircleAvatar(
-                              radius: 20,
-                              backgroundColor: Colors.black.withOpacity(0.6),
-                              child: Icon(
-                                Platform.isAndroid
-                                    ? Icons.flip_camera_android
-                                    : Icons.flip_camera_ios,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
+            preview: (controller) => SafeArea(
+              child: Stack(
+                    children: [
+                      CameraCameraPreview(
+                        enableZoom: widget.enableZoom,
+                        key: UniqueKey(),
+                        controller: controller,
+                      ),
+                      if (widget.back != null)
+                        Positioned(
+                          top: 8.0,
+                          left: 15.0,
+                          child: widget.back!,
                         ),
-                      )
-                  ],
-                ),
+                      if (widget.flash != null)
+                        Positioned(
+                          top: 8.0,
+                          right: 15.0,
+                          child: widget.flash!,
+                        ),
+                    ],
+                  ),
+            ),
             failure: (message, _) => Container(
                   color: Colors.black,
                   child: Text(message),
