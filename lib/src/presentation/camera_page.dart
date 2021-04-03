@@ -9,6 +9,8 @@ import 'package:camera_camera/src/presentation/widgets/camera_preview.dart';
 import 'package:camera_camera/src/shared/entities/camera_side.dart';
 import 'package:flutter/material.dart';
 
+import 'controller/camera_camera_controller.dart';
+
 class CameraCamera extends StatefulWidget {
   ///Define your prefer resolution
   final ResolutionPreset resolutionPreset;
@@ -29,6 +31,8 @@ class CameraCamera extends StatefulWidget {
 
   final Widget? flash;
 
+  final Function(CameraCameraController controller, CameraBloc bloc) onCreated;
+
   CameraCamera({
     Key? key,
     this.resolutionPreset = ResolutionPreset.ultraHigh,
@@ -38,6 +42,7 @@ class CameraCamera extends StatefulWidget {
     this.enableZoom = true,
     this.back,
     this.flash,
+    required this.onCreated,
   }) : super(key: key);
 
   @override
@@ -82,29 +87,32 @@ class _CameraCameraState extends State<CameraCamera> {
         stream: bloc.statusStream,
         initialData: CameraStatusEmpty(),
         builder: (_, snapshot) => snapshot.data!.when(
-            preview: (controller) => SafeArea(
-              child: Stack(
-                    children: [
-                      CameraCameraPreview(
-                        enableZoom: widget.enableZoom,
-                        key: UniqueKey(),
-                        controller: controller,
+            preview: (controller) {
+              widget.onCreated.call(controller, bloc);
+              return SafeArea(
+                child: Stack(
+                  children: [
+                    CameraCameraPreview(
+                      enableZoom: widget.enableZoom,
+                      key: UniqueKey(),
+                      controller: controller,
+                    ),
+                    if (widget.back != null)
+                      Positioned(
+                        top: 8.0,
+                        left: 15.0,
+                        child: widget.back!,
                       ),
-                      if (widget.back != null)
-                        Positioned(
-                          top: 8.0,
-                          left: 15.0,
-                          child: widget.back!,
-                        ),
-                      if (widget.flash != null)
-                        Positioned(
-                          top: 8.0,
-                          right: 15.0,
-                          child: widget.flash!,
-                        ),
-                    ],
-                  ),
-            ),
+                    if (widget.flash != null)
+                      Positioned(
+                        top: 8.0,
+                        right: 15.0,
+                        child: widget.flash!,
+                      ),
+                  ],
+                ),
+              );
+            },
             failure: (message, _) => Container(
                   color: Colors.black,
                   child: Text(message),
