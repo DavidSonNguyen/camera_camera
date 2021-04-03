@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b72a0dfd-7a6d-49e4-8d31-108be19eb265" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/camera_camera.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/camera_camera.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presentation/camera_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/camera_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presentation/controller/camera_camera_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/controller/camera_camera_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presentation/widgets/camera_preview.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/widgets/camera_preview.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,5 +71,11 @@
       <updated>1554866910457</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="100" y="125" width="1480" height="748" key="VCS.FileHistoryDialog" timestamp="1617433514769">
+      <screen x="0" y="25" width="1680" height="948" />
+    </state>
+    <state x="100" y="125" width="1480" height="748" key="VCS.FileHistoryDialog/0.25.1680.948@0.25.1680.948" timestamp="1617433514769" />
   </component>
 </project>

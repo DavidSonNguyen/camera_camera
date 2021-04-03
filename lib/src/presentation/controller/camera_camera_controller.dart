@@ -13,7 +13,9 @@ class CameraCameraController {
   late CameraController _controller;
 
   final statusNotifier = ValueNotifier<CameraCameraStatus>(CameraCameraEmpty());
+
   CameraCameraStatus get status => statusNotifier.value;
+
   set status(CameraCameraStatus status) => statusNotifier.value = status;
 
   CameraCameraController({
@@ -140,7 +142,15 @@ class CameraCameraController {
 
   void takePhoto() async {
     final file = await _controller.takePicture();
+    onPath(file.path);
+  }
 
+  void recordVideo() {
+    _controller.startVideoRecording();
+  }
+
+  void stopVideoRecord() async {
+    final file = await _controller.stopVideoRecording();
     onPath(file.path);
   }
 

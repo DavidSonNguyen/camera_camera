@@ -40,54 +40,7 @@ class _CameraCameraPreviewState extends State<CameraCameraPreview> {
                 onScaleUpdate: (details) {
                   widget.controller.setZoomLevel(details.scale);
                 },
-                child: Stack(
-                  children: [
-                    Center(child: widget.controller.buildPreview()),
-                    Positioned(
-                      bottom: 24.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: InkWell(
-                        onTap: () {
-                          widget.controller.takePhoto();
-                        },
-                        child: Container(
-                          child: Center(
-                            child: Card(
-                              color: Colors.transparent,
-                              elevation: 0.0,
-                              margin: EdgeInsets.zero,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40.0),
-                                  side: BorderSide(
-                                    color: Colors.white.withOpacity(0.3),
-                                    width: 12.0,
-                                  )),
-                              child: Container(
-                                width: 56.0,
-                                height: 56.0,
-                                margin: EdgeInsets.all(12.0),
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xFFFF414D),
-                                      Color(0xFFFF815B),
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                  ),
-                                  borderRadius: BorderRadius.circular(
-                                    40.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: Center(child: widget.controller.buildPreview()),
               ),
           failure: (message, _) => Container(
                 color: Colors.black,
