@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b72a0dfd-7a6d-49e4-8d31-108be19eb265" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presentation/controller/camera_camera_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/controller/camera_camera_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presentation/widgets/camera_preview.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/widgets/camera_preview.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/camera_camera.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/camera_camera.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,18 +17,6 @@
         <option value="Dart File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>favid</find>
-      <find>cropp</find>
-      <find>image</find>
-      <find>detached</find>
-      <find>AppLifecycleState</find>
-      <find>deviceorientation</find>
-      <find>native_device_orientation</find>
-      <find>orientation</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
